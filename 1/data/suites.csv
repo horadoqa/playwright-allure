@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","477","Deve criar um novo usuário","chromium","2026-07-27","failed","2026-07-27","Cadastrar usuário","user/cadastro/cadastro.spec.js","",""
+"","462","Deve realizar login com sucesso","chromium","2026-07-27","passed","2026-07-27","Login","user/login/login.spec.js","",""
+"","1297","get started link","chromium","2026-07-27","passed","2026-07-27","","e2e/example.spec.js","",""
+"","586","should return 200 OK when accessing serverest.dev","chromium","2026-07-27","passed","2026-07-27","HealthCheck","api/healthcheck.spec.js","",""
+"","1126","has title","chromium","2026-07-27","passed","2026-07-27","","e2e/example.spec.js","",""
+"","117","Deve listar todos os usuários","chromium","2026-07-27","passed","2026-07-27","Listar usuários","user/busca/all.spec.js","",""
