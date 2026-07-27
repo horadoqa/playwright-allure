@@ -1,0 +1,2 @@
+Status recebido: 400
+Resposta da API: { message: 'Este email já está sendo usado' }

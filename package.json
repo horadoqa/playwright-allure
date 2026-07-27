@@ -1,0 +1,35 @@
+{
+  "name": "playwright-allure",
+  "version": "1.0.0",
+  "description": "Projeto com playwright-allure",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "smoke": "playwright test tests/smoke",
+    "regression": "playwright test tests/regression",
+    "e2e": "playwright test tests/e2e",
+    "api": "playwright test tests/api",
+    "headed": "playwright test --headed",
+    "debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
+    "allure:open": "allure open reports/allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.1",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "axios": "^1.18.1",
+    "dotenv": "^17.4.2"
+  }
+}
