@@ -40,10 +40,13 @@ menu:
 # ================================
 criar_usuario:
 	@echo "Criando usuário 'Hora do QA'..."
-	@RESPONSE=$$(curl -s -X POST "https://serverest.dev/usuarios" \
+	@EMAIL=horadoqa-$$(date +%s)@qa.com.br; \
+	NOME="Hora do QA"; \
+	PASSWORD="1q2w3e4r"; \
+	RESPONSE=$$(curl -s -X POST "https://serverest.dev/usuarios" \
 		-H "accept: application/json" \
 		-H "Content-Type: application/json" \
-		-d '{ "nome": "Hora do QA", "email": "horadoqa6@qa.com.br", "password": "teste", "administrador": "true" }'); \
+		-d "{ \"nome\": \"$$NOME\", \"email\": \"$$EMAIL\", \"password\": \"$$PASSWORD\", \"administrador\": \"true\" }"); \
 	MESSAGE=$$(echo "$$RESPONSE" | jq -r '.message'); \
 	if [ "$$MESSAGE" = "Cadastro realizado com sucesso" ]; then \
 		echo "$$RESPONSE"; \
@@ -53,8 +56,7 @@ criar_usuario:
 		echo "$$RESPONSE"; \
 		exit 1; \
 	fi
-
-
+	
 # ================================
 # 2) Buscar IDs de usuários
 # ================================
