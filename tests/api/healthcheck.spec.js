@@ -1,10 +1,26 @@
 import { test, expect } from '@playwright/test';
 import 'dotenv/config';
 
-test.describe('HealthCheck', () => {
-  test('should return 200 OK when accessing serverest.dev', async ({ request }) => {
-    const response = await request.get(process.env.BASE_URL);
+const rotas = [
+  '',
+  '/usuarios',
+  '/produtos'
+];
 
-    expect(response.status()).toBe(200);
-  });
+test.describe('Health Check - ServeRest', () => {
+
+  for (const rota of rotas) {
+
+    test(`GET ${rota || '/'}`, async ({ request }) => {
+
+      const response = await request.get(
+        `${process.env.BASE_URL}${rota}`
+      );
+
+      expect(response.status()).toBe(200);
+
+    });
+
+  }
+
 });
