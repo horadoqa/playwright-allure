@@ -36,5 +36,7 @@ project/
 
 ```
 
+Link principal: https://horadoqa.github.io/playwright-allure/
 
+Link do Relatório: https://horadoqa.github.io/playwright-allure/{}/index.html
 
