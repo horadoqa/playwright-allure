@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playwright Zero to Hero — Complete Guide</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #161b22;
+      --surface2: #1c2333;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #2ea043;
+      --blue: #58a6ff;
+      --purple: #d2a8ff;
+      --red: #f85149;
+      --orange: #d29922;
+      --code-bg: #0d1117;
+      --green: #7ee787;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #161b22, #1a2740, #161b22);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .8rem;
+      color: var(--blue);
+      margin-top: 16px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 17, 23, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      overflow-x: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 4px;
+    }
+
+    nav a {
+      display: block;
+      padding: 12px 14px;
+      font-size: .85rem;
+      color: var(--muted);
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom-color: var(--accent);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: .85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .desc {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: .95rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .card-title {
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: .95rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 20px;
+      overflow-x: auto;
+      font-size: .84rem;
+      line-height: 1.65;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+      color: var(--text);
+    }
+
+    .kw {
+      color: #ff7b72;
+    }
+
+    .fn {
+      color: #d2a8ff;
+    }
+
+    .str {
+      color: #a5d6ff;
+    }
+
+    .cmt {
+      color: #8b949e;
+      font-style: italic;
+    }
+
+    .num {
+      color: #79c0ff;
+    }
+
+    .type {
+      color: #7ee787;
+    }
+
+    .concept {
+      background: var(--surface2);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      font-size: .9rem;
+    }
+
+    .concept strong {
+      color: var(--blue);
+    }
+
+    .tip {
+      border-left-color: var(--accent);
+    }
+
+    .tip strong {
+      color: var(--accent);
+    }
+
+    .warn {
+      border-left-color: var(--orange);
+    }
+
+    .warn strong {
+      color: var(--orange);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    td code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: .82rem;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    }
+
+    p code,
+    li code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: .85em;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    @media(max-width:768px) {
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .compare-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .compare-card h3 {
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-card ul {
+      list-style: none;
+      padding: 16px 20px;
+    }
+
+    .compare-card li {
+      padding: 6px 0;
+      font-size: .9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .pros li::before {
+      content: "✅";
+      flex-shrink: 0;
+    }
+
+    .cons li::before {
+      content: "⚠️";
+      flex-shrink: 0;
+    }
+
+    .pw {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .se {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 20px;
+      font-size: .85rem;
+    }
+
+    .flow-step {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 600;
+    }
+
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>🎭 Playwright Zero to Hero</h1>
+    <p>Um guia visual completo sobre testes de ponta a ponta (end-to-end) com Playwright — dos conceitos básicos aos padrões avançados, com exemplos de código reais.</p>
+    <span class="badge">@playwright/test ^1.62.0 · JavaScript</span>
+    <p style="color:var(--muted); font-size:0.9rem; margin-top:12px;">Author: Ricardo Fahham</p>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#basics">Basics</a></li>
+      <li><a href="#locators">Locators</a></li>
+      <li><a href="#actions">Actions</a></li>
+      <li><a href="#assertions">Assertions</a></li>
+      <li><a href="#hooks">Hooks &amp; Fixtures</a></li>
+      <li><a href="#pom">Page Object Model</a></li>
+      <li><a href="#api">API &amp; Network</a></li>
+      <li><a href="#advanced">Advanced</a></li>
+      <li><a href="#comparison">Playwright vs Selenium</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- ===================== SECTION 0: SETUP ===================== -->
+    <div class="section" id="setup">
+      <div class="section-header">
+        <div class="section-num">0</div>
+        <h2>Project Setup &amp; Configuration</h2>
+      </div>
+      <p class="desc">How this project is structured and configured. Playwright uses a single config file to control
+        browsers, retries, reporters, and more.</p>
+
+      <div class="concept tip">
+        <strong>💡 Quick Start:</strong> Run <code>npm init playwright@latest</code> to scaffold a new project, or clone
+        this repo and run <code>npm install</code>.
+      </div>
+
+      <div class="card">
+        <div class="card-title">📁 Estrutura do Projeto </div>
+        <pre>
+Playwright-Allure/
+      ├── .github/
+      │    └── workflow/
+      │        └── allure.yaml               <span class="cmt">// Workflow para o Github Actions</span>
+      ├── package.json                       <span class="cmt">// scripts &amp; dependencies</span>
+      ├── playwright.config.ts               <span class="cmt">// central configuration</span>
+      ├── .env                               <span class="cmt">// Variáveis utilizadas nos testes.</span>
+      ├── tests/
+      │   ├── api/
+      │   │   ├── healthcheck.spec.js        <span class="cmt">// Valida se a API do Serverest.dev está respondendo, script com Javascript</span>
+      │   │   └── healthcheck.spec.ts        <span class="cmt">// Valida se a API do Serverest.dev está respondendo, script com Typescript</span>
+      │   ├── produtos/
+      │   |   └── crud.spec.js               <span class="cmt">// Cenário com CRUD para Produtos.</span>
+      │   ├── user/
+      │   │   ├── crud.spec.js               <span class="cmt">// Cenário com CRUD para Usuários.</span>
+      │   │   └── login.spec.js              <span class="cmt">// Cenário com login válido para Usuários.</span>
+      │   │   └── login-negativo.spec.js     <span class="cmt">// Cenário com logins Inválidos para Usuários.</span>
+      └── screenshots/                       <span class="cmt">// generated screenshots</span></pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⚙️ playwright.config.ts — Key Settings</div>
+        <pre>
+<span class="kw">import</span> { defineConfig, devices } <span class="kw">from</span> <span class="str">'@playwright/test'</span>;
+
+<span class="kw">export default</span> <span class="fn">defineConfig</span>({
+  testDir: <span class="str">'./tests'</span>,
+  fullyParallel: <span class="num">true</span>,              <span class="cmt">// run tests in parallel</span>
+  forbidOnly: !!process.env.CI,      <span class="cmt">// fail if test.only on CI</span>
+  retries: process.env.CI ? <span class="num">2</span> : <span class="num">0</span>,  <span class="cmt">// retry on CI only</span>
+  reporter: [[<span class="str">'html'</span>], [<span class="str">'list'</span>]],    <span class="cmt">// HTML + console output</span>
+
+  use: {
+    baseURL: <span class="str">'https://demo.playwright.dev/todomvc'</span>,
+    screenshot: <span class="str">'only-on-failure'</span>,
+    video: <span class="str">'retain-on-failure'</span>,
+    trace: <span class="str">'on-first-retry'</span>,
+  },
+
+  projects: [
+    { name: <span class="str">'chromium'</span>, use: { ...devices[<span class="str">'Desktop Chrome'</span>] } },
+    { name: <span class="str">'firefox'</span>,  use: { ...devices[<span class="str">'Desktop Firefox'</span>] } },
+    { name: <span class="str">'webkit'</span>,   use: { ...devices[<span class="str">'Desktop Safari'</span>] } },
+    { name: <span class="str">'mobile-chrome'</span>, use: { ...devices[<span class="str">'Pixel 5'</span>] } },
+    { name: <span class="str">'mobile-safari'</span>, use: { ...devices[<span class="str">'iPhone 12'</span>] } },
+  ],
+});</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🚀 NPM Scripts</div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>npm test</code></td>
+                <td>Run all tests (headless)</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:headed</code></td>
+                <td>Run with visible browser</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:ui</code></td>
+                <td>Open interactive UI mode</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:debug</code></td>
+                <td>Run with Playwright Inspector</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:chrome</code></td>
+                <td>Run on Chromium only</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:firefox</code></td>
+                <td>Run on Firefox only</td>
+              </tr>
+              <tr>
+                <td><code>npm run test:webkit</code></td>
+                <td>Run on WebKit only</td>
+              </tr>
+              <tr>
+                <td><code>npm run report</code></td>
+                <td>Open the HTML report</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 1: BASICS ===================== -->
+    <div class="section" id="basics">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <h2>Basics — Navigation &amp; First Assertions</h2>
+      </div>
+      <p class="desc">Every test starts with navigating to a page and verifying something is there. Playwright
+        auto-waits for elements, so no <code>sleep()</code> needed.</p>
+
+      <div class="concept">
+        <strong>🔑 Key Concept:</strong> <code>page.goto('/')</code> uses the <code>baseURL</code> from config. All
+        <code>expect()</code> assertions auto-retry until the timeout (default 5s).
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">page.goto()</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Find Element</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">expect() Assert</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">✅ Pass / ❌ Fail</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📝 Navigate &amp; Assert Title</div>
+        <pre>
+<span class="kw">import</span> { test, expect } <span class="kw">from</span> <span class="str">'@playwright/test'</span>;
+
+test(<span class="str">'should navigate to the app'</span>, <span class="kw">async</span> ({ page }) => {
+  <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);                          <span class="cmt">// uses baseURL from config</span>
+
+  <span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveTitle</span>(<span class="str">/TodoMVC/</span>);    <span class="cmt">// regex match on title</span>
+
+  <span class="kw">await</span> <span class="fn">expect</span>(                                   <span class="cmt">// find heading by role</span>
+    page.<span class="fn">getByRole</span>(<span class="str">'heading'</span>, { name: <span class="str">'todos'</span> })
+  ).<span class="fn">toBeVisible</span>();
+});
+
+test(<span class="str">'should have correct URL'</span>, <span class="kw">async</span> ({ page }) => {
+  <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);
+  <span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveURL</span>(<span class="str">/todomvc/</span>);       <span class="cmt">// assert URL pattern</span>
+});</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 2: LOCATORS ===================== -->
+    <div class="section" id="locators">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <h2>Locators — Finding Elements</h2>
+      </div>
+      <p class="desc">Locators are the core of Playwright. They auto-wait, auto-retry, and are strict by default (fail
+        if multiple matches). Prefer semantic locators.</p>
+
+      <div class="concept tip">
+        <strong>💡 Priority Order:</strong> <code>getByRole</code> → <code>getByText</code> → <code>getByTestId</code> →
+        <code>getByPlaceholder</code> → <code>locator(css)</code>. Role-based locators are the most resilient to UI
+        changes.
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 Locator Strategies</div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Strategy</th>
+                <th>Code</th>
+                <th>When to Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>By Role ⭐</td>
+                <td><code>page.getByRole('textbox', { name: '...' })</code></td>
+                <td>Best practice — semantic &amp; accessible</td>
+              </tr>
+              <tr>
+                <td>By Placeholder</td>
+                <td><code>page.getByPlaceholder('What needs...')</code></td>
+                <td>Input fields with placeholder text</td>
+              </tr>
+              <tr>
+                <td>By Text</td>
+                <td><code>page.getByText('todos')</code></td>
+                <td>Visible text content</td>
+              </tr>
+              <tr>
+                <td>By Test ID</td>
+                <td><code>page.getByTestId('new-todo')</code></td>
+                <td>When you control the markup</td>
+              </tr>
+              <tr>
+                <td>By Label</td>
+                <td><code>page.getByLabel('Email')</code></td>
+                <td>Form fields with labels</td>
+              </tr>
+              <tr>
+                <td>CSS Selector</td>
+                <td><code>page.locator('.new-todo')</code></td>
+                <td>Fallback — less resilient</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔗 Chaining Locators</div>
+        <pre>
+<span class="cmt">// Narrow down: find items WITHIN a container</span>
+<span class="kw">const</span> todoList = page.<span class="fn">locator</span>(<span class="str">'.todo-list'</span>);
+<span class="kw">const</span> firstItem = todoList.<span class="fn">locator</span>(<span class="str">'li'</span>).<span class="fn">first</span>();
+<span class="kw">await</span> <span class="fn">expect</span>(firstItem).<span class="fn">toContainText</span>(<span class="str">'Buy milk'</span>);
+
+<span class="cmt">// .first(), .last(), .nth(index) — pick from multiple matches</span></pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📝 All Locator Examples</div>
+        <pre>
+<span class="cmt">// By Role (recommended)</span>
+<span class="kw">const</span> input = page.<span class="fn">getByRole</span>(<span class="str">'textbox'</span>, { name: <span class="str">'What needs to be done?'</span> });
+
+<span class="cmt">// By Placeholder</span>
+<span class="kw">const</span> input2 = page.<span class="fn">getByPlaceholder</span>(<span class="str">'What needs to be done?'</span>);
+
+<span class="cmt">// By Text</span>
+<span class="kw">const</span> heading = page.<span class="fn">getByText</span>(<span class="str">'todos'</span>);
+
+<span class="cmt">// By CSS (fallback)</span>
+<span class="kw">const</span> input3 = page.<span class="fn">locator</span>(<span class="str">'.new-todo'</span>);</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 3: ACTIONS ===================== -->
+    <div class="section" id="actions">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <h2>Actions — User Interactions</h2>
+      </div>
+      <p class="desc">Simulate real user behavior: typing, clicking, double-clicking, hovering, and keyboard shortcuts.
+        Playwright waits for elements to be actionable before performing actions.</p>
+
+      <div class="concept">
+        <strong>🔑 Auto-Actionability:</strong> Before each action, Playwright checks the element is visible, enabled,
+        stable, and not obscured. No manual waits needed.
+      </div>
+
+      <div class="card">
+        <div class="card-title">⌨️ Type &amp; Submit</div>
+        <pre>
+<span class="kw">const</span> input = page.<span class="fn">getByPlaceholder</span>(<span class="str">'What needs to be done?'</span>);
+
+<span class="kw">await</span> input.<span class="fn">fill</span>(<span class="str">'Learn Playwright'</span>);    <span class="cmt">// clear + type (fast)</span>
+<span class="kw">await</span> input.<span class="fn">press</span>(<span class="str">'Enter'</span>);              <span class="cmt">// press a key</span>
+
+<span class="cmt">// Verify</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveCount</span>(<span class="num">1</span>);
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveText</span>([<span class="str">'Learn Playwright'</span>]);</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🖱️ Click, Double-Click, Hover</div>
+        <pre>
+<span class="cmt">// Single click — toggle a checkbox</span>
+<span class="kw">await</span> page.<span class="fn">locator</span>(<span class="str">'.todo-list li .toggle'</span>).<span class="fn">click</span>();
+
+<span class="cmt">// Double-click — enter edit mode</span>
+<span class="kw">await</span> page.<span class="fn">locator</span>(<span class="str">'.todo-list li label'</span>).<span class="fn">dblclick</span>();
+
+<span class="cmt">// Edit: clear and retype</span>
+<span class="kw">const</span> editInput = page.<span class="fn">locator</span>(<span class="str">'.todo-list li .edit'</span>);
+<span class="kw">await</span> editInput.<span class="fn">fill</span>(<span class="str">'Updated text'</span>);
+<span class="kw">await</span> editInput.<span class="fn">press</span>(<span class="str">'Enter'</span>);
+
+<span class="cmt">// Hover — reveal hidden buttons</span>
+<span class="kw">await</span> page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>).<span class="fn">hover</span>();</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔄 Loop — Add Multiple Items</div>
+        <pre>
+<span class="kw">const</span> items = [<span class="str">'Buy groceries'</span>, <span class="str">'Clean house'</span>, <span class="str">'Walk the dog'</span>];
+<span class="kw">const</span> input = page.<span class="fn">getByPlaceholder</span>(<span class="str">'What needs to be done?'</span>);
+
+<span class="kw">for</span> (<span class="kw">const</span> item <span class="kw">of</span> items) {
+  <span class="kw">await</span> input.<span class="fn">fill</span>(item);
+  <span class="kw">await</span> input.<span class="fn">press</span>(<span class="str">'Enter'</span>);
+}
+
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveCount</span>(<span class="num">3</span>);
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveText</span>(items);</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 4: ASSERTIONS ===================== -->
+    <div class="section" id="assertions">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <h2>Assertions — Verifying State</h2>
+      </div>
+      <p class="desc">All <code>expect()</code> assertions auto-retry until the condition is met or the timeout expires
+        (default 5s). This eliminates flaky tests caused by timing issues.</p>
+
+      <div class="card">
+        <div class="card-title">📋 Assertion Cheat Sheet</div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Assertion</th>
+                <th>What It Checks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>toBeVisible()</code></td>
+                <td>Element is visible on page</td>
+              </tr>
+              <tr>
+                <td><code>toBeHidden()</code></td>
+                <td>Element is not visible</td>
+              </tr>
+              <tr>
+                <td><code>toHaveText('...')</code></td>
+                <td>Exact text content</td>
+              </tr>
+              <tr>
+                <td><code>toContainText('...')</code></td>
+                <td>Partial text match</td>
+              </tr>
+              <tr>
+                <td><code>toHaveCount(n)</code></td>
+                <td>Number of matched elements</td>
+              </tr>
+              <tr>
+                <td><code>toHaveClass(/pattern/)</code></td>
+                <td>CSS class matches regex</td>
+              </tr>
+              <tr>
+                <td><code>toBeChecked()</code></td>
+                <td>Checkbox/radio is checked</td>
+              </tr>
+              <tr>
+                <td><code>toHaveURL(/pattern/)</code></td>
+                <td>Page URL matches</td>
+              </tr>
+              <tr>
+                <td><code>toHaveTitle(/pattern/)</code></td>
+                <td>Page title matches</td>
+              </tr>
+              <tr>
+                <td><code>toHaveScreenshot()</code></td>
+                <td>Visual regression comparison</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">✅ Common Assertions in Action</div>
+        <pre>
+<span class="cmt">// Visibility</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list'</span>)).<span class="fn">toBeVisible</span>();
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.nonexistent'</span>)).<span class="fn">toBeHidden</span>();
+
+<span class="cmt">// Text content</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>).<span class="fn">first</span>()).<span class="fn">toHaveText</span>(<span class="str">'Task A'</span>);
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>).<span class="fn">first</span>()).<span class="fn">toContainText</span>(<span class="str">'Task'</span>);
+
+<span class="cmt">// Count</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveCount</span>(<span class="num">2</span>);
+
+<span class="cmt">// CSS class</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>).<span class="fn">first</span>()).<span class="fn">toHaveClass</span>(<span class="str">/completed/</span>);
+
+<span class="cmt">// Checkbox state</span>
+<span class="kw">await</span> <span class="fn">expect</span>(checkbox).<span class="fn">not</span>.<span class="fn">toBeChecked</span>();
+<span class="kw">await</span> checkbox.<span class="fn">click</span>();
+<span class="kw">await</span> <span class="fn">expect</span>(checkbox).<span class="fn">toBeChecked</span>();</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🧪 Soft Assertions (Collect Multiple Failures)</div>
+        <pre>
+<span class="cmt">// Soft assertions don't stop the test on failure — all run, then report</span>
+<span class="kw">await</span> expect.<span class="fn">soft</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveCount</span>(<span class="num">2</span>);
+<span class="kw">await</span> expect.<span class="fn">soft</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-count'</span>)).<span class="fn">toContainText</span>(<span class="str">'2 items left'</span>);
+
+<span class="cmt">// Negation with .not</span>
+<span class="kw">await</span> <span class="fn">expect</span>(element).<span class="fn">not</span>.<span class="fn">toBeVisible</span>();</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 5: HOOKS & FIXTURES ===================== -->
+    <div class="section" id="hooks">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <h2>Hooks &amp; Custom Fixtures</h2>
+      </div>
+      <p class="desc">Hooks run setup/teardown code around tests. Fixtures let you create reusable, composable test
+        contexts — Playwright's most powerful pattern for DRY tests.</p>
+
+      <div class="concept">
+        <strong>🔑 Hooks vs Fixtures:</strong> Hooks (<code>beforeEach</code>, <code>afterEach</code>) are simple
+        setup/teardown. Fixtures (<code>test.extend</code>) are reusable, composable, and can provide custom data or
+        state to tests.
+      </div>
+
+      <div class="card">
+        <div class="card-title">🪝 Lifecycle Hooks</div>
+        <pre>
+test.<span class="fn">describe</span>(<span class="str">'My Suite'</span>, () => {
+  test.<span class="fn">beforeEach</span>(<span class="kw">async</span> ({ page }) => {
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);                <span class="cmt">// runs before EACH test</span>
+  });
+
+  test.<span class="fn">afterEach</span>(<span class="kw">async</span> ({ page }) => {
+    <span class="cmt">// cleanup if needed (Playwright handles most cleanup)</span>
+  });
+
+  test(<span class="str">'page is ready'</span>, <span class="kw">async</span> ({ page }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">getByRole</span>(<span class="str">'heading'</span>, { name: <span class="str">'todos'</span> })).<span class="fn">toBeVisible</span>();
+  });
+});</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🧩 Custom Fixtures with test.extend</div>
+        <pre>
+<span class="cmt">// Create a fixture that pre-populates todos</span>
+<span class="kw">const</span> testWithTodos = test.<span class="fn">extend</span>&lt;{ todosPage: <span class="type">void</span> }&gt;({
+  todosPage: <span class="kw">async</span> ({ page }, use) => {
+    <span class="cmt">// ── SETUP ──</span>
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);
+    <span class="kw">const</span> input = page.<span class="fn">getByPlaceholder</span>(<span class="str">'What needs to be done?'</span>);
+    <span class="kw">await</span> input.<span class="fn">fill</span>(<span class="str">'Fixture Todo 1'</span>); <span class="kw">await</span> input.<span class="fn">press</span>(<span class="str">'Enter'</span>);
+    <span class="kw">await</span> input.<span class="fn">fill</span>(<span class="str">'Fixture Todo 2'</span>); <span class="kw">await</span> input.<span class="fn">press</span>(<span class="str">'Enter'</span>);
+
+    <span class="kw">await</span> <span class="fn">use</span>();  <span class="cmt">// ← hand control to the test</span>
+
+    <span class="cmt">// ── TEARDOWN ── (runs after the test)</span>
+  },
+});
+
+testWithTodos(<span class="str">'todos are pre-populated'</span>, <span class="kw">async</span> ({ page, todosPage }) => {
+  <span class="kw">await</span> <span class="fn">expect</span>(page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>)).<span class="fn">toHaveCount</span>(<span class="num">2</span>);
+});</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 6: PAGE OBJECT MODEL ===================== -->
+    <div class="section" id="pom">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <h2>Page Object Model (POM)</h2>
+      </div>
+      <p class="desc">Encapsulate page interactions into reusable classes. This keeps tests clean, readable, and easy to
+        maintain when the UI changes.</p>
+
+      <div class="concept tip">
+        <strong>💡 Why POM?</strong> If a CSS selector changes, you update it in ONE place (the page class) instead of
+        every test file. Tests read like user stories.
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">Page Class</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Locators as Properties</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Actions as Methods</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Clean Tests</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📦 todo-page.ts — The Page Object</div>
+        <pre>
+<span class="kw">import</span> { <span class="type">type Locator</span>, <span class="type">type Page</span>, expect } <span class="kw">from</span> <span class="str">'@playwright/test'</span>;
+
+<span class="kw">export class</span> <span class="type">TodoPage</span> {
+  <span class="kw">readonly</span> page: <span class="type">Page</span>;
+  <span class="kw">readonly</span> newTodoInput: <span class="type">Locator</span>;
+  <span class="kw">readonly</span> todoItems: <span class="type">Locator</span>;
+  <span class="kw">readonly</span> todoCount: <span class="type">Locator</span>;
+
+  <span class="fn">constructor</span>(page: <span class="type">Page</span>) {
+    <span class="kw">this</span>.page = page;
+    <span class="kw">this</span>.newTodoInput = page.<span class="fn">getByPlaceholder</span>(<span class="str">'What needs to be done?'</span>);
+    <span class="kw">this</span>.todoItems = page.<span class="fn">locator</span>(<span class="str">'.todo-list li'</span>);
+    <span class="kw">this</span>.todoCount = page.<span class="fn">locator</span>(<span class="str">'.todo-count'</span>);
+  }
+
+  <span class="kw">async</span> <span class="fn">goto</span>()                    { <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/'</span>); }
+  <span class="kw">async</span> <span class="fn">addTodo</span>(text: <span class="type">string</span>)     { <span class="kw">await</span> <span class="kw">this</span>.newTodoInput.<span class="fn">fill</span>(text); <span class="kw">await</span> <span class="kw">this</span>.newTodoInput.<span class="fn">press</span>(<span class="str">'Enter'</span>); }
+  <span class="kw">async</span> <span class="fn">completeTodo</span>(i: <span class="type">number</span>)  { <span class="kw">await</span> <span class="kw">this</span>.todoItems.<span class="fn">nth</span>(i).<span class="fn">locator</span>(<span class="str">'.toggle'</span>).<span class="fn">click</span>(); }
+  <span class="kw">async</span> <span class="fn">deleteTodo</span>(i: <span class="type">number</span>)    {
+    <span class="kw">await</span> <span class="kw">this</span>.todoItems.<span class="fn">nth</span>(i).<span class="fn">hover</span>();
+    <span class="kw">await</span> <span class="kw">this</span>.todoItems.<span class="fn">nth</span>(i).<span class="fn">locator</span>(<span class="str">'.destroy'</span>).<span class="fn">click</span>();
+  }
+  <span class="kw">async</span> <span class="fn">filterByActive</span>()         { <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">getByRole</span>(<span class="str">'link'</span>, { name: <span class="str">'Active'</span> }).<span class="fn">click</span>(); }
+  <span class="kw">async</span> <span class="fn">filterByCompleted</span>()      { <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">getByRole</span>(<span class="str">'link'</span>, { name: <span class="str">'Completed'</span> }).<span class="fn">click</span>(); }
+  <span class="kw">async</span> <span class="fn">expectTodoCount</span>(n: <span class="type">number</span>)       { <span class="kw">await</span> <span class="fn">expect</span>(<span class="kw">this</span>.todoItems).<span class="fn">toHaveCount</span>(n); }
+  <span class="kw">async</span> <span class="fn">expectTodoTexts</span>(t: <span class="type">string[]</span>)   { <span class="kw">await</span> <span class="fn">expect</span>(<span class="kw">this</span>.todoItems).<span class="fn">toHaveText</span>(t); }
+}</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🧪 todo-page.spec.ts — Clean Tests Using POM</div>
+        <pre>
+<span class="kw">import</span> { <span class="type">TodoPage</span> } <span class="kw">from</span> <span class="str">'./todo-page'</span>;
+
+test.<span class="fn">describe</span>(<span class="str">'Page Object Model'</span>, () => {
+  <span class="kw">let</span> todoPage: <span class="type">TodoPage</span>;
+
+  test.<span class="fn">beforeEach</span>(<span class="kw">async</span> ({ page }) => {
+    todoPage = <span class="kw">new</span> <span class="type">TodoPage</span>(page);
+    <span class="kw">await</span> todoPage.<span class="fn">goto</span>();
+  });
+
+  test(<span class="str">'add and verify todos'</span>, <span class="kw">async</span> () => {
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'Learn POM pattern'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'Write clean tests'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">expectTodoCount</span>(<span class="num">2</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">expectTodoTexts</span>([<span class="str">'Learn POM pattern'</span>, <span class="str">'Write clean tests'</span>]);
+  });
+
+  test(<span class="str">'complete and filter'</span>, <span class="kw">async</span> () => {
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'Active task'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'Done task'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">completeTodo</span>(<span class="num">1</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">filterByActive</span>();
+    <span class="kw">await</span> todoPage.<span class="fn">expectTodoCount</span>(<span class="num">1</span>);
+  });
+
+  test(<span class="str">'delete a todo'</span>, <span class="kw">async</span> () => {
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'To be deleted'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">addTodo</span>(<span class="str">'To remain'</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">deleteTodo</span>(<span class="num">0</span>);
+    <span class="kw">await</span> todoPage.<span class="fn">expectTodoTexts</span>([<span class="str">'To remain'</span>]);
+  });
+});</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 7: API & NETWORK ===================== -->
+    <div class="section" id="api">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <h2>API Testing &amp; Network Interception</h2>
+      </div>
+      <p class="desc">Playwright can make HTTP requests directly (no browser needed) and intercept/mock network traffic
+        for faster, more reliable tests.</p>
+
+      <div class="concept">
+        <strong>🔑 Two Modes:</strong> Use <code>request</code> fixture for direct API calls (no browser). Use
+        <code>page.route()</code> to intercept, mock, or block network requests in browser tests.
+      </div>
+
+      <div class="card">
+        <div class="card-title">📡 Direct API Requests (No Browser)</div>
+        <pre>
+test(<span class="str">'GET request'</span>, <span class="kw">async</span> ({ <span class="type">request</span> }) => {
+  <span class="kw">const</span> response = <span class="kw">await</span> request.<span class="fn">get</span>(<span class="str">'https://jsonplaceholder.typicode.com/todos/1'</span>);
+
+  <span class="fn">expect</span>(response.<span class="fn">ok</span>()).<span class="fn">toBeTruthy</span>();
+  <span class="fn">expect</span>(response.<span class="fn">status</span>()).<span class="fn">toBe</span>(<span class="num">200</span>);
+
+  <span class="kw">const</span> body = <span class="kw">await</span> response.<span class="fn">json</span>();
+  <span class="fn">expect</span>(body).<span class="fn">toHaveProperty</span>(<span class="str">'id'</span>, <span class="num">1</span>);
+  <span class="fn">expect</span>(body).<span class="fn">toHaveProperty</span>(<span class="str">'title'</span>);
+});
+
+test(<span class="str">'POST request'</span>, <span class="kw">async</span> ({ <span class="type">request</span> }) => {
+  <span class="kw">const</span> response = <span class="kw">await</span> request.<span class="fn">post</span>(<span class="str">'https://jsonplaceholder.typicode.com/todos'</span>, {
+    data: { title: <span class="str">'New todo'</span>, completed: <span class="num">false</span>, userId: <span class="num">1</span> },
+  });
+  <span class="kw">const</span> body = <span class="kw">await</span> response.<span class="fn">json</span>();
+  <span class="fn">expect</span>(body).<span class="fn">toHaveProperty</span>(<span class="str">'title'</span>, <span class="str">'New todo'</span>);
+});</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎭 Network Mocking &amp; Interception</div>
+        <pre>
+<span class="cmt">// Mock an API response</span>
+<span class="kw">await</span> page.<span class="fn">route</span>(<span class="str">'**/api/todos'</span>, (route) => {
+  route.<span class="fn">fulfill</span>({
+    status: <span class="num">200</span>,
+    contentType: <span class="str">'application/json'</span>,
+    body: <span class="fn">JSON.stringify</span>([{ id: <span class="num">1</span>, title: <span class="str">'Mocked Todo'</span>, completed: <span class="num">false</span> }]),
+  });
+});
+
+<span class="cmt">// Block resources for faster tests</span>
+<span class="kw">await</span> page.<span class="fn">route</span>(<span class="str">/(\.png|\.jpg|\.woff2)/</span>, (route) => route.<span class="fn">abort</span>());
+
+<span class="cmt">// Let requests through (useful for logging)</span>
+<span class="kw">await</span> page.<span class="fn">route</span>(<span class="str">'**/*.css'</span>, (route) => route.<span class="fn">continue</span>());</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 8: ADVANCED ===================== -->
+    <div class="section" id="advanced">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <h2>Advanced Patterns</h2>
+      </div>
+      <p class="desc">Screenshots, visual regression, multi-tab handling, localStorage, waiting strategies, tags, and
+        annotations.</p>
+
+      <div class="card">
+        <div class="card-title">📸 Screenshots &amp; Visual Regression</div>
+        <pre>
+<span class="cmt">// Full page screenshot</span>
+<span class="kw">await</span> page.<span class="fn">screenshot</span>({ path: <span class="str">'screenshots/homepage.png'</span>, fullPage: <span class="num">true</span> });
+
+<span class="cmt">// Element screenshot</span>
+<span class="kw">const</span> header = page.<span class="fn">locator</span>(<span class="str">'header'</span>);
+<span class="kw">await</span> header.<span class="fn">screenshot</span>({ path: <span class="str">'screenshots/header.png'</span> });
+
+<span class="cmt">// Visual regression — compares against baseline</span>
+<span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveScreenshot</span>(<span class="str">'homepage.png'</span>, {
+  maxDiffPixelRatio: <span class="num">0.05</span>,  <span class="cmt">// allow 5% pixel difference</span>
+});</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🗂️ Multiple Tabs &amp; Pages</div>
+        <pre>
+test(<span class="str">'handle new tab'</span>, <span class="kw">async</span> ({ page, <span class="type">context</span> }) => {
+  <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);
+
+  <span class="cmt">// Wait for new page event + trigger it</span>
+  <span class="kw">const</span> [newPage] = <span class="kw">await</span> <span class="fn">Promise.all</span>([
+    context.<span class="fn">waitForEvent</span>(<span class="str">'page'</span>),
+    page.<span class="fn">evaluate</span>(() => window.<span class="fn">open</span>(<span class="str">'https://demo.playwright.dev/todomvc/'</span>)),
+  ]);
+
+  <span class="kw">await</span> newPage.<span class="fn">waitForLoadState</span>();
+  <span class="kw">await</span> <span class="fn">expect</span>(newPage).<span class="fn">toHaveTitle</span>(<span class="str">/TodoMVC/</span>);
+});</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💾 localStorage &amp; Storage State</div>
+        <pre>
+<span class="cmt">// Set localStorage</span>
+<span class="kw">await</span> page.<span class="fn">evaluate</span>(() => {
+  localStorage.<span class="fn">setItem</span>(<span class="str">'test-key'</span>, <span class="str">'test-value'</span>);
+});
+
+<span class="cmt">// Read localStorage</span>
+<span class="kw">const</span> value = <span class="kw">await</span> page.<span class="fn">evaluate</span>(() => localStorage.<span class="fn">getItem</span>(<span class="str">'test-key'</span>));
+<span class="fn">expect</span>(value).<span class="fn">toBe</span>(<span class="str">'test-value'</span>);</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⏳ Waiting Strategies</div>
+        <pre>
+<span class="cmt">// Wait for network idle</span>
+<span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>, { waitUntil: <span class="str">'networkidle'</span> });
+
+<span class="cmt">// Wait for a specific response</span>
+<span class="kw">const</span> responsePromise = page.<span class="fn">waitForResponse</span>(
+  (resp) => resp.<span class="fn">url</span>().<span class="fn">includes</span>(<span class="str">'todomvc'</span>) && resp.<span class="fn">status</span>() === <span class="num">200</span>
+);
+<span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);
+<span class="kw">const</span> response = <span class="kw">await</span> responsePromise;</pre>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏷️ Tags &amp; Annotations</div>
+        <pre>
+<span class="cmt">// Mark a test as slow (triples the timeout)</span>
+test(<span class="str">'slow test'</span>, <span class="kw">async</span> ({ page }) => {
+  test.<span class="fn">slow</span>();
+  <span class="cmt">// ... long-running test</span>
+});
+
+<span class="cmt">// Skip conditionally</span>
+test(<span class="str">'skip on webkit'</span>, <span class="kw">async</span> ({ page, browserName }) => {
+  test.<span class="fn">skip</span>(browserName === <span class="str">'webkit'</span>, <span class="str">'Not supported on WebKit yet'</span>);
+});
+
+<span class="cmt">// Tagged tests — run with: npx playwright test --grep @smoke</span>
+test(<span class="str">'smoke test @smoke'</span>, <span class="kw">async</span> ({ page }) => {
+  <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/'</span>);
+  <span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveTitle</span>(<span class="str">/TodoMVC/</span>);
+});</pre>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 9: PLAYWRIGHT vs SELENIUM ===================== -->
+    <div class="section" id="comparison">
+      <div class="section-header">
+        <div class="section-num">⚔️</div>
+        <h2>Playwright vs Selenium — Pros &amp; Cons</h2>
+      </div>
+      <p class="desc">Both are powerful E2E testing tools, but they have very different architectures and trade-offs.
+        Here's a detailed comparison.</p>
+
+      <div class="card">
+        <div class="card-title">📊 Feature Comparison</div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th><span class="pw">Playwright</span></th>
+                <th><span class="se">Selenium</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Architecture</td>
+                <td>Direct browser protocol (CDP/BiDi)</td>
+                <td>WebDriver protocol via driver binary</td>
+              </tr>
+              <tr>
+                <td>Languages</td>
+                <td>JS/TS, Python, Java, C#</td>
+                <td>JS, Python, Java, C#, Ruby, Kotlin</td>
+              </tr>
+              <tr>
+                <td>Browsers</td>
+                <td>Chromium, Firefox, WebKit</td>
+                <td>Chrome, Firefox, Safari, Edge, IE</td>
+              </tr>
+              <tr>
+                <td>Auto-Wait</td>
+                <td>✅ Built-in for all actions</td>
+                <td>❌ Manual waits required</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>Very fast (no HTTP overhead)</td>
+                <td>Slower (HTTP-based protocol)</td>
+              </tr>
+              <tr>
+                <td>Parallel Tests</td>
+                <td>✅ Built-in, per-test isolation</td>
+                <td>Requires Selenium Grid or TestNG</td>
+              </tr>
+              <tr>
+                <td>API Testing</td>
+                <td>✅ Built-in <code>request</code> fixture</td>
+                <td>❌ Needs external libraries</td>
+              </tr>
+              <tr>
+                <td>Network Mocking</td>
+                <td>✅ Built-in <code>page.route()</code></td>
+                <td>❌ Needs proxy tools</td>
+              </tr>
+              <tr>
+                <td>Screenshots</td>
+                <td>✅ Full page + element + visual diff</td>
+                <td>✅ Full page only (basic)</td>
+              </tr>
+              <tr>
+                <td>Video Recording</td>
+                <td>✅ Built-in</td>
+                <td>❌ Needs external tools</td>
+              </tr>
+              <tr>
+                <td>Trace Viewer</td>
+                <td>✅ Built-in time-travel debugger</td>
+                <td>❌ Not available</td>
+              </tr>
+              <tr>
+                <td>Mobile Testing</td>
+                <td>Emulation only (viewports, touch)</td>
+                <td>Real devices via Appium</td>
+              </tr>
+              <tr>
+                <td>iframes</td>
+                <td>✅ First-class support</td>
+                <td>✅ Supported (switch-based)</td>
+              </tr>
+              <tr>
+                <td>Multi-tab/window</td>
+                <td>✅ Native support</td>
+                <td>⚠️ Limited, manual handling</td>
+              </tr>
+              <tr>
+                <td>Community Age</td>
+                <td>Since 2020 (Microsoft)</td>
+                <td>Since 2004 (mature ecosystem)</td>
+              </tr>
+              <tr>
+                <td>CI/CD</td>
+                <td>✅ Docker images, GitHub Actions</td>
+                <td>✅ Widely supported</td>
+              </tr>
+              <tr>
+                <td>Test Runner</td>
+                <td>✅ Built-in (@playwright/test)</td>
+                <td>❌ Needs JUnit, TestNG, pytest, etc.</td>
+              </tr>
+              <tr>
+                <td>Codegen</td>
+                <td>✅ <code>npx playwright codegen</code></td>
+                <td>⚠️ Selenium IDE (browser extension)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="compare-card">
+          <h3><span class="pw">🎭 Playwright</span> — Pros</h3>
+          <ul class="pros">
+            <li>Auto-waiting eliminates flaky tests — no <code>sleep()</code> or explicit waits</li>
+            <li>Blazing fast execution via direct browser protocol (no HTTP overhead)</li>
+            <li>Built-in test runner, assertions, fixtures, and parallel execution</li>
+            <li>Network mocking and API testing out of the box</li>
+            <li>Trace viewer with time-travel debugging (screenshots at every step)</li>
+            <li>Built-in video recording and screenshot comparison</li>
+            <li>Each test gets a fresh browser context (true isolation)</li>
+            <li>Codegen tool records user actions and generates test code</li>
+            <li>First-class TypeScript support</li>
+            <li>Cross-browser with a single API (Chromium, Firefox, WebKit)</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h3><span class="pw">🎭 Playwright</span> — Cons</h3>
+          <ul class="cons">
+            <li>Newer ecosystem — smaller community and fewer third-party plugins</li>
+            <li>No real mobile device testing (emulation only, no Appium equivalent)</li>
+            <li>Fewer language bindings than Selenium (no Ruby, no Kotlin)</li>
+            <li>Uses bundled browser binaries (larger disk footprint)</li>
+            <li>Less enterprise adoption history compared to Selenium</li>
+            <li>WebKit support is Playwright's own build, not actual Safari</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h3><span class="se">🔧 Selenium</span> — Pros</h3>
+          <ul class="pros">
+            <li>20+ years of maturity — battle-tested in enterprise environments</li>
+            <li>Massive community, extensive documentation, and tutorials</li>
+            <li>Supports real mobile devices via Appium integration</li>
+            <li>More language bindings (Java, Python, C#, Ruby, JS, Kotlin)</li>
+            <li>W3C WebDriver standard — browser-vendor supported</li>
+            <li>Selenium Grid for distributed/parallel execution at scale</li>
+            <li>Works with actual browser installations (no bundled binaries)</li>
+            <li>Huge ecosystem of third-party tools and frameworks</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h3><span class="se">🔧 Selenium</span> — Cons</h3>
+          <ul class="cons">
+            <li>No auto-waiting — requires explicit/implicit waits (flaky tests)</li>
+            <li>Slower execution due to HTTP-based WebDriver protocol</li>
+            <li>No built-in test runner — needs JUnit, TestNG, pytest, etc.</li>
+            <li>No built-in network mocking or API testing</li>
+            <li>No built-in video recording or trace viewer</li>
+            <li>Complex setup: browser + driver binary version matching</li>
+            <li>No built-in parallel execution (needs Grid or test framework config)</li>
+            <li>Verbose code for common tasks compared to Playwright</li>
+            <li>No built-in screenshot comparison / visual regression</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="concept warn" style="margin-top:24px;">
+        <strong>⚡ TL;DR:</strong> Choose <span class="pw">Playwright</span> for modern web apps where speed,
+        reliability, and developer experience matter most. Choose <span class="se">Selenium</span> when you need real
+        mobile device testing, broader language support, or are working in an enterprise with existing Selenium
+        infrastructure.
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="card-title">🤔 When to Pick Which?</div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>New project, modern web app</td>
+                <td><span class="pw">Playwright</span> — faster setup, better DX</td>
+              </tr>
+              <tr>
+                <td>Need real mobile device testing</td>
+                <td><span class="se">Selenium</span> + Appium</td>
+              </tr>
+              <tr>
+                <td>Team uses Ruby or Kotlin</td>
+                <td><span class="se">Selenium</span> — broader language support</td>
+              </tr>
+              <tr>
+                <td>API + UI testing in one framework</td>
+                <td><span class="pw">Playwright</span> — built-in API testing</td>
+              </tr>
+              <tr>
+                <td>Existing Selenium Grid infrastructure</td>
+                <td><span class="se">Selenium</span> — leverage existing setup</td>
+              </tr>
+              <tr>
+                <td>Flaky test issues</td>
+                <td><span class="pw">Playwright</span> — auto-wait solves most flakiness</td>
+              </tr>
+              <tr>
+                <td>Visual regression testing</td>
+                <td><span class="pw">Playwright</span> — built-in screenshot comparison</td>
+              </tr>
+              <tr>
+                <td>Cross-browser + cross-device</td>
+                <td>Both work, but <span class="pw">Playwright</span> is simpler to configure</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end container -->
+
+  <footer>
+    <p>🎭 Playwright Zero to Hero Guide — Built from the <code>playwright-zero-to-hero</code> project</p>
+    <p style="margin-top:8px;">Author: Chandra Atmakuri</p>
+    <p style="margin-top:8px;">Playwright docs: <a href="https://playwright.dev/docs/intro"
+        target="_blank">playwright.dev/docs</a> · Selenium docs: <a href="https://www.selenium.dev/documentation/"
+        target="_blank">selenium.dev/documentation</a></p>
+  </footer>
+
+  <script>
+    // Smooth scroll for nav links — ensures all sections are reachable
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const offset = 60; // nav height
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

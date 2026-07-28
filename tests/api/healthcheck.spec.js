@@ -22,5 +22,4 @@ test.describe('Health Check - ServeRest', () => {
     });
 
   }
-
 });

@@ -63,7 +63,7 @@ criar_usuario:
 buscar_ids:
 	@echo "Buscando IDs de usuários com nome 'Hora do QA'..."
 	@ids=$$(curl -s "https://serverest.dev/usuarios" \
-		| jq -r '.usuarios[] | select(.nome == "Hora do QA") | ._id'); \
+		| jq -r '.usuarios[] | select(.nome | test("^k6 Load User")) | ._id'); \
 	if [ -z "$$ids" ]; then \
 		echo "Nenhum usuário encontrado!"; \
 	else \
@@ -74,7 +74,7 @@ buscar_ids:
 # ================================
 # 3) Deletar usuários via ids.txt
 # ================================
-deletar_ids:
+deletar_ids: buscar_ids
 	@BASE_URL="https://serverest.dev/usuarios"; \
 	if [ ! -f ids.txt ]; then \
 	  echo "Arquivo ids.txt não encontrado!"; \
