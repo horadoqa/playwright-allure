@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Eddie',
+  email: 'Alexane_Borer@yahoo.com',
+  password: 'LFBhJY73eH',
+  id: 'nZUkrDNb2sAARyOQ'
+}
