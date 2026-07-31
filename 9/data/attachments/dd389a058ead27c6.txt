@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Anne',
+  email: 'Krista56@yahoo.com',
+  password: 'jS73RKKVSP',
+  id: 'yOfF6R07IgM3h8Du'
+}
