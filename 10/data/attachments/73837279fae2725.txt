@@ -1,0 +1,1 @@
+{ message: 'Cadastro realizado com sucesso', _id: 'kcRjpFE2TA36lI8Z' }

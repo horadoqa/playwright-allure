@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Katherine',
+  email: 'Natalie.Witting14@hotmail.com',
+  password: 'mfkg6zPGgJ',
+  id: 'cHLhoOBSEYavgNSa'
+}

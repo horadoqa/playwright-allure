@@ -1,0 +1,7 @@
+Dados atualizados confirmados: {
+  nome: 'Hora do QA Atualizado',
+  email: 'horadoqa-atualizado@serverest.dev',
+  password: '1q2w3e4r',
+  administrador: 'true',
+  _id: 'pvgjeKUoGhmfgD53'
+}
