@@ -1,0 +1,7 @@
+Usuário consultado: {
+  nome: 'Hora do QA',
+  email: 'horadoqa@serverest.dev',
+  password: '1q2w3e4r',
+  administrador: 'true',
+  _id: 'L9tWMcBkBP3WdJqg'
+}
