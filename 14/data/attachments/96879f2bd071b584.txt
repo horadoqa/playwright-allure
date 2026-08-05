@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Roselyn',
+  email: 'Mozelle49@gmail.com',
+  password: 'XiZtau7dhB',
+  id: 'XFZ9wyFBPlhO4Iv5'
+}
