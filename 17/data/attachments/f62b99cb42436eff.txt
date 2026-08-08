@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Johnny',
+  email: 'Sidney_Weissnat32@gmail.com',
+  password: 'qeZzQsb5As',
+  id: 'WpXsQMZnxyw4YZE7'
+}
