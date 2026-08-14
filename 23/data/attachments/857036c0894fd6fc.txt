@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Arnold',
+  email: 'Julien56@hotmail.com',
+  password: 'gwlmN2voCR',
+  id: 'BqYNnRHnYyjsCY5z'
+}
