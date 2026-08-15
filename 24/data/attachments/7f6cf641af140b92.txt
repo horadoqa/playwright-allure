@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Gloria',
+  email: 'Macy_Mann@hotmail.com',
+  password: 'XeKPQol0vC',
+  id: '7kf09EcI3DyQUCSd'
+}
