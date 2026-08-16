@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Summer',
+  email: 'Shari1@gmail.com',
+  password: '8ftXW1mCmk',
+  id: 'bRNwss18bjJrVD0s'
+}
