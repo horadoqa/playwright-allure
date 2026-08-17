@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Merle',
-  email: 'Alfonso.Bartoletti@gmail.com',
-  password: 'uwhO8hmPkF',
-  id: 'E1KtWXQaITWdKPwh'
-}

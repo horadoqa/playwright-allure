@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Rosemarie',
+  email: 'Allan17@gmail.com',
+  password: 'L49d62akoi',
+  id: 'n4m2G0XxliUqXJUR'
+}
