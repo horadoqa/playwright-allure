@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Eriberto',
-  email: 'Bob.Carroll@yahoo.com',
-  password: 'rdis4DkfES',
-  id: 'NHVU1H5utyjsaig3'
-}

@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Bartholome',
+  email: 'Hugh_Wolff@hotmail.com',
+  password: '4WZGeWJz7z',
+  id: 'mIsaSCq4yrvYYXce'
+}
