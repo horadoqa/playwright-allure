@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Gregg',
+  email: 'Mervin77@gmail.com',
+  password: 'CKM6xiyA1V',
+  id: 'RJYdbKe9q1gqLe2J'
+}
