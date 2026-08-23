@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Maryann',
+  email: 'Martha.Bruen93@gmail.com',
+  password: 'oRtjV3Mb6i',
+  id: 'SbNYUWDqR5hGFWjY'
+}

@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Ottis',
-  email: 'Antoinette_Parisian@gmail.com',
-  password: 'TPdPNN3yVv',
-  id: 'ammXfhVHtK0D3Yof'
-}
