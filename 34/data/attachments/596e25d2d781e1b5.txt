@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Chester',
+  email: 'Amos24@hotmail.com',
+  password: 'TBmZwPaCR7',
+  id: 'IIFCeIwHoxzvr7Wu'
+}
