@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Raina',
-  email: 'Roma_Kuhlman@yahoo.com',
-  password: '1NJv0Hh5Gj',
-  id: 'wcGuPUYmFVT6eH8F'
-}
