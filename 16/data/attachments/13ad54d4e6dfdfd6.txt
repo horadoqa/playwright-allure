@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Dustin',
-  email: 'Terri.Kirlin@hotmail.com',
-  password: 'RLQejtilNx',
-  id: 'R0GfypKDSicy5OCq'
-}
