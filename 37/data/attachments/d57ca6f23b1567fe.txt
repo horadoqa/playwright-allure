@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Toni',
+  email: 'Lauren_Murphy@hotmail.com',
+  password: 'rUeYgVXmKu',
+  id: 'uHzOvIuUmcml5iPL'
+}
