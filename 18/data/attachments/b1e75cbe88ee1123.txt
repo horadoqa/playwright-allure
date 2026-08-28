@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Melba',
-  email: 'Percival61@hotmail.com',
-  password: 'x6D448Tl0v',
-  id: 'Sv9CKzGNcggTL4d4'
-}

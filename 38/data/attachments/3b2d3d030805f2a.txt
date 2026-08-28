@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Amya',
+  email: 'Adelle.Emmerich@gmail.com',
+  password: '5SRv1gOTTO',
+  id: 'oL9CND2lVjQFkvon'
+}
