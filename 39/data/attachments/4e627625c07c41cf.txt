@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Chesley',
+  email: 'Olen.Mohr66@hotmail.com',
+  password: 'S9RFhNs1rl',
+  id: 'jqjHhsE1Ps8jTw7c'
+}
