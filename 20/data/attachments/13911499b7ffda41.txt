@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Kaitlin',
-  email: 'Owen.OHara@yahoo.com',
-  password: 'IaNbZUY2Rn',
-  id: 'KI4NLYE94H92P6wC'
-}
