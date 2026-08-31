@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Lynda',
-  email: 'Danny.Wintheiser@hotmail.com',
-  password: '7b3fktL4bx',
-  id: 'klxN3CTmaopd9riC'
-}
