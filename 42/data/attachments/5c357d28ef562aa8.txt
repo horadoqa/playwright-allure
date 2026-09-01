@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Eula',
+  email: 'Roderick.Heathcote@yahoo.com',
+  password: 'dH6MlLmHx0',
+  id: 'ESCLh2lVGODxMURQ'
+}

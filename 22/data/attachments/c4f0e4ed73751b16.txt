@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Cletus',
-  email: 'Gregg.Altenwerth@yahoo.com',
-  password: 'WMkxvW82Kg',
-  id: 'ICdEIO0igB3UayqP'
-}
