@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Simone',
+  email: 'Hettie56@gmail.com',
+  password: 'gPAstgFkLL',
+  id: 'PKSzkJ8OtKLOZ3Gr'
+}
