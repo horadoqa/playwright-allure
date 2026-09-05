@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Hayden',
+  email: 'Omar.Prosacco@gmail.com',
+  password: 'K3sDNx46Al',
+  id: 'Ey4qYUt8mAaO7GHk'
+}
