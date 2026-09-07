@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Jairo',
-  email: 'Maxine_Zemlak@yahoo.com',
-  password: 'WWEVb8Jbej',
-  id: 'bKBGmRLyzEzK8xIR'
-}

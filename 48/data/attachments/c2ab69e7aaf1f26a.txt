@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Felipa',
+  email: 'Erin26@gmail.com',
+  password: 'l5yhLTxeMp',
+  id: 'mAaaxcOuyb9w2ZPa'
+}
