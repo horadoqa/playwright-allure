@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Charles',
+  email: 'Dorothy.Beer90@yahoo.com',
+  password: '5kfI8yviyo',
+  id: 'Y1TA82nJgzEwa8YJ'
+}
