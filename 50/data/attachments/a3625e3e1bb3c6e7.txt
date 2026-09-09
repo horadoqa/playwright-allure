@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Toby',
+  email: 'Reymundo54@yahoo.com',
+  password: 'CsavWRhlia',
+  id: 'xIM9apoRu6V7RoUt'
+}
