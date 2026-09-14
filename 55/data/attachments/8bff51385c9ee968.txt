@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Cody',
+  email: 'Adeline_Bogisich-Hintz80@hotmail.com',
+  password: 'ILk64T7YiQ',
+  id: 'D761PbKk0YB2YVD2'
+}
