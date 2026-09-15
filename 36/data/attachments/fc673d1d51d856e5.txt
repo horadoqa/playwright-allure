@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Chesley',
-  email: 'Nelson.DuBuque@hotmail.com',
-  password: 'jIEBZkaGyB',
-  id: 'zeGspQckCue3VxOQ'
-}

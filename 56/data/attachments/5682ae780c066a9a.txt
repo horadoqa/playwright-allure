@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Amir',
+  email: 'Shanna5@yahoo.com',
+  password: 'oTwsOnApFH',
+  id: 'nz2TDEbIYkLTdH02'
+}
