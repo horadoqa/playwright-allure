@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Brain',
+  email: 'Hazel.Runolfsdottir-OConner54@hotmail.com',
+  password: 'Zpt0lqwmSC',
+  id: 'v6eLWQNkAnWfUr1B'
+}
