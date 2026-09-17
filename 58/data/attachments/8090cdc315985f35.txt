@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Harvey',
+  email: 'Darrin_Bernhard60@yahoo.com',
+  password: '9ZKW9Cr9L5',
+  id: 'H4hewLWXAVUjsuGV'
+}
