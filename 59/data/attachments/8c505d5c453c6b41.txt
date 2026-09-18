@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Zion',
+  email: 'Kristin_Murray78@hotmail.com',
+  password: 'alCVEYE4TJ',
+  id: 'TZsG89B8AzV0p5gk'
+}
