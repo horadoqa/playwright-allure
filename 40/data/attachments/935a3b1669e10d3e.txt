@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Bernice',
-  email: 'Gunnar.Schaden11@yahoo.com',
-  password: 'pNWSUsXEhS',
-  id: 'fx3jGtELYQp5smrr'
-}
