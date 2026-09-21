@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Iris',
+  email: 'Dane.Morar@gmail.com',
+  password: '1rN1Wv1rlc',
+  id: 'YU5uCHi3zR19wYTv'
+}
