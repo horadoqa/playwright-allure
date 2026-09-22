@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Morris',
+  email: 'Karl_Turcotte@yahoo.com',
+  password: '5DVujPjfzp',
+  id: 'fzay3JpgxG8I3XzE'
+}

@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Chanelle',
-  email: 'Alda_Donnelly@gmail.com',
-  password: 'n0ddx02ntu',
-  id: 'mbnkjje7O6JUZQvG'
-}
