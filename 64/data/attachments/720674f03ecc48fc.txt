@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Delphia',
+  email: 'Danielle.Herman@gmail.com',
+  password: 'UEjCfdKR8T',
+  id: 'bgTUs1KYfz8hyJ9r'
+}
