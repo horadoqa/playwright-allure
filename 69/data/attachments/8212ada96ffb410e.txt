@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Florida',
+  email: 'Concepcion_Ratke16@gmail.com',
+  password: '1n82AUJ06g',
+  id: 'o2mQITzfN2I7OBh6'
+}
