@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Elwyn',
+  email: 'Marcella71@yahoo.com',
+  password: '59etEcRXsm',
+  id: 'eI2oqKTSM0sc9F0G'
+}
