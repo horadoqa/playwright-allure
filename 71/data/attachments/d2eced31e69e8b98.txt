@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Shelia',
+  email: 'Lysanne_Robel@yahoo.com',
+  password: 'H8PPpIa5um',
+  id: 'jkQoEsADcmDb5Nbg'
+}
