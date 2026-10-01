@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Colleen',
+  email: 'Darlene_Tremblay-Crona89@yahoo.com',
+  password: '7gCsSOdjH8',
+  id: '4wpnElbKW5hP2nrb'
+}
