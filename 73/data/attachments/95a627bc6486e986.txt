@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Fred',
+  email: 'Giovanna.Hamill@yahoo.com',
+  password: 'hobsNgx0MW',
+  id: 'oEPKJvCTLjCUjmD1'
+}
