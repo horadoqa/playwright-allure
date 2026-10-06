@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Corine',
+  email: 'Marsha_Legros98@yahoo.com',
+  password: '87mL7VQGcj',
+  id: 'RMXgTEd3DnnzSOto'
+}
