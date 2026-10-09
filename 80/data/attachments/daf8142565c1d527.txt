@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Tom',
+  email: 'Orie.Heidenreich16@yahoo.com',
+  password: 'qDtCtAwdMa',
+  id: 'eMggi6ii4f4UPczT'
+}
