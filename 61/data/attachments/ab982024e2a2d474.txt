@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Dallin',
-  email: 'Todd_Senger6@gmail.com',
-  password: '5bbP6XVsFW',
-  id: 'utc31XX2N8hl68Wu'
-}
