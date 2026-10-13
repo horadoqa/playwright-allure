@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Willis',
+  email: 'Brant.Franecki@gmail.com',
+  password: 'Y1gud4C1KY',
+  id: 'J7Kvkn3Z175G7UwZ'
+}
