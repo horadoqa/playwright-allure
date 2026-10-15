@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Nathanael',
+  email: 'Lora.Roberts@yahoo.com',
+  password: 'NdYDja8Brk',
+  id: 'MsUCS6PmYf3qzmMx'
+}
