@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Joanne',
+  email: 'Tamara34@gmail.com',
+  password: 'BNrkpN6jRs',
+  id: 'uvLKEXCVodjpTzzR'
+}
