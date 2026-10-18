@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Amos',
+  email: 'Brandy_Fahey74@hotmail.com',
+  password: 'FbxgmCkIQ8',
+  id: 'svUAkp3CUztlwqmr'
+}
