@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Kattie',
+  email: 'Cristopher_Sauer28@yahoo.com',
+  password: 'gmwQKKAifV',
+  id: 'g45RwIjrTM8jZB3d'
+}
