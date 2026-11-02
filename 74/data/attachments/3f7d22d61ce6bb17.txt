@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Vivien',
-  email: 'Melody.Connelly@hotmail.com',
-  password: 'pLVzQqgBaD',
-  id: 'QQqz3IHhQiu54Lfp'
-}
