@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Eudora',
+  email: 'Flo_Senger10@yahoo.com',
+  password: 'g457WSKZKP',
+  id: 'qbgrjN7dpsGS5AWI'
+}

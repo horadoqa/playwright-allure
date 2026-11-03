@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Justen',
-  email: 'Gabrielle_Collins52@yahoo.com',
-  password: 'H4TlxrSAgZ',
-  id: 'eaY7p02nUscDpsDe'
-}
