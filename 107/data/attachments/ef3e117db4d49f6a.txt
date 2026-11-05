@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Bobbie',
+  email: 'Alyson.Leffler21@hotmail.com',
+  password: 'caynJpjt7a',
+  id: 'fowIlIj65sDak5T2'
+}

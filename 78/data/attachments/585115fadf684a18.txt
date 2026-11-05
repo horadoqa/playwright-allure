@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Judah',
-  email: 'Kamren.Sauer@yahoo.com',
-  password: 'qcx9sf2bfq',
-  id: 'ZEmFgDwL06Gig22b'
-}
