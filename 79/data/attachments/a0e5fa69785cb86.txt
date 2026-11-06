@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Nathaniel',
-  email: 'Tavares.Hayes47@yahoo.com',
-  password: 'gz52DKVMv5',
-  id: 'JsL8745VXe3dHfX5'
-}
