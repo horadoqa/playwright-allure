@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Presley',
+  email: 'Phyllis20@hotmail.com',
+  password: 'Y77WqCyWUx',
+  id: '5VpRcwziRj4KqAAz'
+}
