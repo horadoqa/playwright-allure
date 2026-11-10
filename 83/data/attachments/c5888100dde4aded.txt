@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Leone',
-  email: 'Art9@yahoo.com',
-  password: 'eIvmlYoL7P',
-  id: 'XfeeptXzs7NhuCgx'
-}
