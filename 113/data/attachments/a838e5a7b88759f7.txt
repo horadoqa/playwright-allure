@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Penny',
+  email: 'Darrel36@yahoo.com',
+  password: '3C5I4bKInv',
+  id: 'g0LXHjAyOImSYtwq'
+}
