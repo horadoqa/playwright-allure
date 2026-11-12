@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Alek',
+  email: 'Arthur.Greenfelder56@hotmail.com',
+  password: 'L7cgliwBvT',
+  id: 'sR2KiE2SMc6wDMli'
+}
