@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Demetrius',
+  email: 'Jack_Brekke8@hotmail.com',
+  password: 'a0h5s1XxtB',
+  id: 'FafQ8hnZEIChsCf2'
+}
