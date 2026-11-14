@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Agustin',
+  email: 'Franklin94@yahoo.com',
+  password: '3m9PCyjQ6L',
+  id: 'OKrPvTTn6iHjBNij'
+}
