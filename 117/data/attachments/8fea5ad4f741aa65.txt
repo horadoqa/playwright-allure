@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Marlon',
+  email: 'Olen.Ullrich76@hotmail.com',
+  password: 'xiCYhaxG8n',
+  id: 'PKtw8stCnMPseUIq'
+}
