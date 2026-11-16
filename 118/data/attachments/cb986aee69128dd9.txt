@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Maximillian',
+  email: 'Shelley.Beier81@hotmail.com',
+  password: 'tgHIwiqOIK',
+  id: 'weQPeFE2k1Vir7nc'
+}
