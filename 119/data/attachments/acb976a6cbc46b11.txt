@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Katherine',
+  email: 'Jacinthe.Champlin@gmail.com',
+  password: 'fOudvExfS0',
+  id: 'NdCmYV8YnL6vpg0Q'
+}
