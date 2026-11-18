@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Modesta',
+  email: 'Joseph_Bednar@hotmail.com',
+  password: 'txKcIzh7c0',
+  id: 'ERu9XyVZ5mykSzfh'
+}
