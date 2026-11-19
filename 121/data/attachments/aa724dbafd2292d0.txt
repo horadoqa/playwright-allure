@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Alyssa',
+  email: 'Courtney.Hagenes28@gmail.com',
+  password: '1Iur0dYgZY',
+  id: '2kJkAbsJRpp3bikC'
+}

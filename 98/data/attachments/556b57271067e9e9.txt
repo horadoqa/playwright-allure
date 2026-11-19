@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Hilario',
-  email: 'Alma51@yahoo.com',
-  password: 'uzDpCgAjoK',
-  id: 'FWGXx472C08EhKYV'
-}
