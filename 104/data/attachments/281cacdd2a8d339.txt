@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Monserrat',
-  email: 'Ernesto67@gmail.com',
-  password: 'DbzKPxYu5l',
-  id: 'q3CTXoNzozg9PzpF'
-}
