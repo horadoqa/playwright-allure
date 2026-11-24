@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Bertha',
+  email: 'Marlon.Smitham@hotmail.com',
+  password: 'FTBjbSTNbA',
+  id: 'Bp1QkRmbTGepnd0y'
+}
