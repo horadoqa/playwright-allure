@@ -1,6 +1,0 @@
-Usuário criado: {
-  nome: 'Hora do QA - Winifred',
-  email: 'Whitney.Walker@yahoo.com',
-  password: 'MRqigHbHKE',
-  id: 'UQA5MpFvzt5NwdGe'
-}
