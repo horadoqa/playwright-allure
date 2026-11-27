@@ -1,0 +1,6 @@
+Usuário criado: {
+  nome: 'Hora do QA - Luna',
+  email: 'Danielle.Aufderhar25@hotmail.com',
+  password: 'nLbA0LPcej',
+  id: 'uJi6ezFhECOk186o'
+}
